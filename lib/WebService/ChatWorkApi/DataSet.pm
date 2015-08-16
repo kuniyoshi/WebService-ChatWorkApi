@@ -90,3 +90,25 @@ sub bless {
 }
 
 1;
+
+__END__
+=encoding utf8
+
+=head1 NAME
+
+WebService::ChatWorkApi::DataSet - isa dataset of Data class
+
+=head1 SYNOPSIS
+
+  use WebService::ChatWorkApi::DataSet::Me;
+  my $ds = WebService::ChatWorkApi::DataSet::Me->new( dh => $ua );
+  my $data = $ds->retrieve;
+
+=head1 DESCRIPTION
+
+This module provides a few methods to access the dataset, and
+has responsibility to make response to be data class.
+
+=head1 TODO
+
+No iteration class now.  It may be needed.

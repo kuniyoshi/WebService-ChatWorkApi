@@ -62,3 +62,27 @@ sub data_hash {
 sub data { &data_hash }
 
 1;
+
+__END__
+=encoding utf8
+
+=head1 NAME
+
+WebService::ChatWorkApi::Response - isa specific response class of response of ChatWork REST API
+
+=head1 SYNOPSIS
+
+  use Data::Dumper;
+  use WebService::ChatWorkApi::Response;
+  my $res = $ua->get( "/me" );
+  bless $res, "WebService::ChatWorkApi::Response";
+  warn Dumper $res->decoded_content;
+
+=head1 DESCRIPTION
+
+This module provides a few methods to represent ChatWork REST API spec.
+
+Two most things are:
+
+1. response is a JSON
+2. 204 No Content at response list is empty (Not []).

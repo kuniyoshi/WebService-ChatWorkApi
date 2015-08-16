@@ -35,7 +35,7 @@ sub new_messages {
     my %condition = @_;
     my $ds = $self->ds->relationship( "message" );
     my @messages = $ds->new_messages( $self );
-    my $messages_ref = $ds->search( \%condition, \@messages );
+    my $messages_ref = $ds->grep( \%condition, \@messages );
     return @{ $messages_ref };
 }
 

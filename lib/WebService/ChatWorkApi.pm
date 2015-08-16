@@ -13,7 +13,7 @@ use Class::Load qw( try_load_class );
 
 our $VERSION = "0.00";
 
-Readonly my $DATASET_CLASS = "WebService::ChatWorkApi::DataSet";
+Readonly my $DATASET_CLASS => "WebService::ChatWorkApi::DataSet";
 
 has ua => ( is => "rw", isa => "WebService::ChatWorkApi::UserAgent" );
 
@@ -33,8 +33,8 @@ sub new {
 }
 
 sub ds {
-    my $self = shift;
-    my $name = shift;
+    args_pos my $self,
+             my $name;
     my $class_name = join q{::}, $DATASET_CLASS, camelize( $name );
     try_load_class( $class_name )
         or die "Could not load $class_name";
@@ -45,3 +45,47 @@ sub ds {
 }
 
 1;
+
+__END__
+=encoding utf8
+
+=head1 NAME
+
+WebService::ChatWorkApi - An ORM Styled ChatWork API Client
+
+=head1 SYNOPSIS
+
+  use utf8;
+  use WebService::ChatWorkApi;
+  my $connection = WebService::ChatWorkApi->new(
+      api_token => $api_token,
+  );
+  my $dataset = $connection->ds( "me" );
+  my $me = $dataset->retrieve;
+  my( $room ) = $me->rooms( name => "マイチャット" );
+  my @messages = $room->new_messages;
+  $room->post_message( "asdf" );
+
+=head1 DESCRIPTION
+
+ChatWork provides REST API to access their web chat service.
+
+Onece API is provided, there will be perl API module.
+Then ChatWork API exists too.  See `SEE ALSO` to what modules
+are released before this module.
+
+I think these modules is a user agent module, but I want to write
+API client likes Object Relation Mapping.
+
+=head1 SUB MODULES
+
+- WebService::ChatWorkApi::UserAgent
+- WebService::ChatWorkApi::Response
+- WebService::ChatWorkApi::DataSet
+- WebService::ChatWorkApi::Data
+
+=head1 SEE ALSO
+
+- L<API Document|http://developer.chatwork.com/ja/>
+- L<WebService::Chatwork|https://github.com/naoto43/perl-webservice-chatwork>
+- L<WWW::Chatwork::API|https://github.com/takaya1992/p5-WWW-Chatwork-API>
