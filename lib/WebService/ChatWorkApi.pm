@@ -11,7 +11,7 @@ use Class::Load qw( try_load_class );
 
 # ABSTRACT: A client library for ChatWork API
 
-our $VERSION = "0.00";
+our $VERSION = '0.01';
 
 Readonly my $DATASET_CLASS => "WebService::ChatWorkApi::DataSet";
 

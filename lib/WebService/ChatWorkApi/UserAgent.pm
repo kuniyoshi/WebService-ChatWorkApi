@@ -12,7 +12,7 @@ use Smart::Args;
 use Class::Load qw( try_load_class );
 use WebService::ChatWorkApi::Response;
 
-our $VERSION = "0.00";
+our $VERSION = '0.01';
 
 Readonly my $AGENT               => sprintf "%s/%s", __PACKAGE__, $VERSION;
 Readonly my $CODEC               => JSON->new;
