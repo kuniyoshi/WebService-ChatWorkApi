@@ -10,7 +10,7 @@ my @keys = qw(
     mytask_room_num
     unread_num
     unread_room_num
-)
+);
 
 __PACKAGE__->_gen_accessor( $_ )
     for @keys;
